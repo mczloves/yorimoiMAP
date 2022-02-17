@@ -1,6 +1,5 @@
 <h1>感想詳細</h1>
 <p>【作成日時】 <%= l @post.created_at %></p>
-<p>【メールアドレス】 <%= @post.user.email %></p>
 <p>【内容】 <%= @post.content %></p>
 <% if current_user.id == @post.user_id %>
   <p>
