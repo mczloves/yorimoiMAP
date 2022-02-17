@@ -20,7 +20,6 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
 
 development:
   <<: *default
@@ -83,5 +82,8 @@ test:
 production:
   <<: *default
   database: yorimoiMAP_production
-  username: yorimoiMAP
-  password: <%= ENV['YORIMOIMAP_DATABASE_PASSWORD'] %>
+  username: <%= Rails.application.credentials.db[:username] %>
+  password: <%= Rails.application.credentials.db[:password] %>
+  host: <%= Rails.application.credentials.db[:hostname] %>
+
+
